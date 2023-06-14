@@ -1,35 +1,37 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-const Insert = ({ onInsert }) => {
+const Insert = () => {
   const [newBook, setNewBook] = useState({});
   const [title, setTitle] = useState("");
   const [isbn, setIsbn] = useState("");
   const [author, setAuthor] = useState("");
   const [year, setYear] = useState(0);
 
+
+
   const clickHandler = (event) => {
     event.preventDefault();
-    setNewBook({
+  
+    axios
+    .post("https://localhost:7179/api/Books", {
       title: title,
       isbn: isbn,
       author: author,
       year: year,
-    });
-
-    alert("Inserted!");
-  };
-
-  useEffect(() => {
-    axios
-    .post("https://localhost:7179/api/Books", newBook)
+    })
     .then(() => {
     })
     .catch((error) => {
       console.error("Error inserting book:", error);
     });
 
-  }, [newBook]);
+    alert("Inserted!");
+  };
+
+  
+ 
+
 
     
 

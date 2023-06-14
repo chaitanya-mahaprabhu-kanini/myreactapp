@@ -12,22 +12,22 @@ const UpdateAPI = ({ onInsert }) => {
   const [year, setYear] = useState(0);
 
   const clickHandler = () => {
-    setNewBook({
+    setNewBook();
+    axios
+    .put(`https://localhost:7179/api/Books${id}`, {
       title: title,
       isbn: isbn,
       author: author,
       year: year,
-    });
-
-    alert("Updated!");
-  };
-
-  axios
-    .put(`https://localhost:7179/api/Books${id}`, newBook)
+    })
     .then(() => {})
     .catch((error) => {
       console.error("Error inserting book:", error);
     });
+    alert("Updated!");
+  };
+
+  
 
   const idHandler = (event) => {
     setId(parseInt(event.target.value, 10));
