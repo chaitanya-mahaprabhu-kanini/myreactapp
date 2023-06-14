@@ -1,24 +1,61 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react";
+import "./App.css";
+import Eff from "./Eff";
+import { Put } from "./Put";
+import { Read } from "./Read";
+import { ReadId } from "./ReadId";
+import {Insert} from "./Insert"
+import Delete from './Delete';
+import UpdateAPI from './UpdateAPI';
+import { Route, Routes} from "react-router-dom";
+import Navbar from "./router/Navbar";
+import Contact from "./router/Contact";
+import Home from "./router/Home";
+import NoMatch from "./router/NoMatch";
+import { Link } from "./DashboardExperiments/Link";
+import axios from "axios";
+import {Parent} from "./Parent";
 
-function App() {
+function App(props) {
+  const [myData, setMyData] = useState([]);
+  const [isError, setIsError] = useState("");
+
+  //using promises
+  // useEffect(() => {
+  //   axios
+  //     .get(" https://jsonplaceholder.typicode.com/posts")
+  //     .then((res) => setMyData(res.data))
+  //     .catch((error) => setIsError(error.message));
+  // }, []);
+
+  const getApiData = async () => {
+    try {
+      const res = await axios.get("https://localhost:7179/api/Books");
+      setMyData(res.data);
+    } catch (error) {
+      setIsError(error);
+    }
+  };
+
+  //using async await
+  useEffect(() => {
+    getApiData();
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <Navbar/>
+
+    <Routes>
+    <Route path = "" element = {<Read/>} />
+    <Route path = "/readid" element = {<ReadId/>} />
+    <Route path = "/update" element = {<UpdateAPI/>} />
+     <Route path = "/delete" element = {<Delete/>} />
+      <Route path = "/insert" element = {<Insert/>} />
+      <Route path = "*" element = {<NoMatch/>} />
+    </Routes>
+
+    </>
   );
 }
 

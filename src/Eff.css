@@ -1,0 +1,11 @@
+#encompass{
+    margin: 10rem auto auto auto;
+    border-radius: 2rem;
+    background-color: steelblue;
+    color: black;
+    height: 20rem;
+    width: 20rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
