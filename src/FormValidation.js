@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './FormValidation.css';
 
 const FormValidation = () => {
@@ -7,7 +7,16 @@ const FormValidation = () => {
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState({});
 
-  const validateForm = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (Object.keys(errors).length === 0) {
+      // Form is valid, perform form submission logic here
+      console.log('Form submitted');
+    }
+  };
+
+  useEffect(() => {
     const newErrors = {};
 
     // Name validation
@@ -31,17 +40,7 @@ const FormValidation = () => {
 
     setErrors(newErrors);
 
-    return Object.keys(newErrors).length === 0;
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    if (validateForm()) {
-      // Form is valid, perform form submission logic here
-      console.log('Form submitted');
-    }
-  };
+  }, [errors, name, email, password]);
 
   return (
     <div class = "encom">
