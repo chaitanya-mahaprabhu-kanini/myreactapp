@@ -2,11 +2,9 @@ import { useEffect, useState } from "react";
 import {Parent} from './Parent';
 const Child = (props) => {
     const a = "Child!";
-        props.box(2);
-        useEffect(() => {}, []);
+        useEffect(() => {props.box(2);}, []);
     return(
         <>
-            <Parent />
         </>
     );
 }

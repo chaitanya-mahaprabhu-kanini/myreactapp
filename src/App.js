@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
+import FormValidation from "./FormValidation";
 import Eff from "./Eff";
 import { Put } from "./Put";
 import { Read } from "./Read";
@@ -44,16 +45,17 @@ function App(props) {
 
   return (
     <>
-    <Navbar/>
+    {/* <Navbar/> */}
 
-    <Routes>
+    {/* <Routes>
     <Route path = "" element = {<Read/>} />
     <Route path = "/readid" element = {<ReadId/>} />
     <Route path = "/update" element = {<UpdateAPI/>} />
      <Route path = "/delete" element = {<Delete/>} />
       <Route path = "/insert" element = {<Insert/>} />
       <Route path = "*" element = {<NoMatch/>} />
-    </Routes>
+    </Routes> */}
+    <FormValidation/>
 
     </>
   );

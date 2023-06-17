@@ -1,0 +1,38 @@
+label {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+
+div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+button {
+  margin: 2rem;
+  height: 3rem;
+  width: 8rem;
+  border-radius: 2rem;
+  background-color: white;
+}
+
+button:hover {
+  background-color: silver;
+}
+
+input{
+    width: 40rem;
+    border-radius: 2rem;
+    align-self: center;
+    text-align: center;
+}
+
+input:focus{
+    background-color:wheat;
+}
+
+span{
+    color:white;
+}
+
