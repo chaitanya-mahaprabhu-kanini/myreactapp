@@ -8,14 +8,17 @@ import { ReadId } from "./ReadId";
 import {Insert} from "./Insert"
 import Delete from './Delete';
 import UpdateAPI from './UpdateAPI';
-import { Route, Routes} from "react-router-dom";
+import { Form, Route, Routes} from "react-router-dom";
 import Navbar from "./router/Navbar";
 import Contact from "./router/Contact";
 import Home from "./router/Home";
 import NoMatch from "./router/NoMatch";
-import { Link } from "./DashboardExperiments/Link";
 import axios from "axios";
 import {Parent} from "./Parent";
+import JobForm from "./DashboardExperiments/JobForm";
+import { AssessmentDiv} from "./DashboardExperiments/AssessmentDiv";
+import { Button } from "@mui/base";
+import { StyledLearning } from "./StyledLearning";
 
 function App(props) {
   const [myData, setMyData] = useState([]);
@@ -55,8 +58,8 @@ function App(props) {
       <Route path = "/insert" element = {<Insert/>} />
       <Route path = "*" element = {<NoMatch/>} />
     </Routes> */}
-    <FormValidation/>
-
+    {/* <AssessmentDiv/> */}
+    <StyledLearning />
     </>
   );
 }
